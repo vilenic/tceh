@@ -3,6 +3,8 @@
 import random
 
 def drawTable(table):
+    """Отрисовывает игровое поле, используя вложенные списки в качестве
+    рядов"""
 
     for i in range(4):
         print('-' * 20)
@@ -17,6 +19,8 @@ def drawTable(table):
 
 
 def getPosition(table):
+    """Устанавливает текущее положение пустого поля в списке и возвращает его
+    в кортеже"""
 
     for i in range(4):
         try:
@@ -26,11 +30,14 @@ def getPosition(table):
             pass
 
 def checkInput(string):
+    """Проверка пользовательского ввода"""
     if string not in "udlr":
         return False
     return True
 
 def checkMove(move, current):
+    """Проверка недопустимости заданного пользователем хода (крайние положения
+    игрового поля). Возвращает True, если ход возможен"""
 
     if current[0] == 0 and move == "u" or current[0] == 3 and move == "d":
         return False
@@ -40,6 +47,9 @@ def checkMove(move, current):
 
 
 def makeMove(direction, board):
+    """Осуществление хода. Ищет пустое поле и осуществляет взаимную замену
+    значений либо внутри вложенного списка, либо между соседними на основе
+    индексов"""
 
     pos = getPosition(board)
     check = checkMove(direction, pos)
@@ -67,6 +77,8 @@ def makeMove(direction, board):
 
 
 def init():
+    """Создает поле на основе списка, наполненного значениями от 1 до 15 +
+    строка из пробела. Бъет его на вложенные списки из 4 элементов"""
 
     def split(biglist):
 
@@ -93,6 +105,8 @@ def init():
     return biglist
 
 def prompt():
+    """Строка справки"""
+
     print("\nХодим пустым полем.\nu - вверх, d - вниз, l - влево, r - вправо\n")
 
 def main():
