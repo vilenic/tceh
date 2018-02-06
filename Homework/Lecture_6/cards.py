@@ -4,6 +4,9 @@ import random
 
 
 class Hand():
+    """Игрок или рука. Имеет параметры: имя, размер (по умолчанию 5 для
+    покера) и список, в который складываются карты"""
+
 
     def __init__(self, name, count=5):
         self.hand = list()
@@ -11,6 +14,7 @@ class Hand():
         self.count = count
 
     def show_hand(self):
+        """Показывает карты игрока"""
         cnt = 1
         print()
         print("{}'s current hand:".format(self.name))
@@ -86,12 +90,27 @@ class CardPack():
             dealt.inhand = True
             player.hand.append(dealt)
 
-player1 = Hand("Ivan")
+def main():
 
-deck = CardPack()
+    player1 = input("Your name, pls: ")
+    player1 = Hand(player1)
 
-deck.shuffle()
+    deck = CardPack()
 
-deck.deal(player1)
+    deck.shuffle()
 
-player1.show_hand()
+    deck.deal(player1)
+
+    player1.show_hand()
+
+
+
+
+
+
+
+
+
+
+if __name__ == '__main__':
+    main()
