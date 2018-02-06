@@ -14,6 +14,7 @@ import random
 #3.3. «Прицепление» остатка.
 #Когда один из подмассивов закончился, мы добавляем все оставшиеся элементы второго подмассива в результирующий массив.
 
+
 def sort_list(listtoSort):
     """Функция сортировки по методу "merge sort". Берет список, рекурсивно
     делит его пополам, пока длина больше 1, далее циклично соединяет
@@ -64,7 +65,9 @@ def sort_list(listtoSort):
 
     print("Соединяем: ", listtoSort)
 
+
 def main():
+
     list_to_sort = []
 
     for n in range(1, 101):
@@ -74,6 +77,9 @@ def main():
 
     sort_list(list_to_sort)
     print(list_to_sort)
+
+
+
 
 if __name__ == '__main__':
     main()
