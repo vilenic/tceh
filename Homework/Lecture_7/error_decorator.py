@@ -4,6 +4,7 @@ import string
 import sys
 import traceback
 
+
 class Error(Exception):
     pass
 
@@ -25,7 +26,8 @@ def error_catcher(func):
         try:
             func(*args)
         except RightError:
-            print(sys.exc_info())
+            e = sys.exc_info()
+            traceback.print_tb(e[2])
         except Exception:
             raise WrongError('WrongError: Very wrong') from None
     return inner
