@@ -11,7 +11,7 @@ def timer(enabled=True):
                 result = func(*args, **kwargs)
                 stop = time.time()
                 elapsed = stop - start
-                print("{}: {:.6f} seconds".format(func.__name__, elapsed))
+                print("Operation took {:.6f} seconds".format(elapsed))
             else:
                 result = func(*args, **kwargs)
             return result
@@ -21,33 +21,38 @@ def timer(enabled=True):
 
 def cache(func):
     def inner(*args):
-        to_cache = tuple([*args])
+        print("-" * 100)
 
-        if to_cache in cache_dict:
+        if args in cache_dict:
             print("From cache")
-            return cache_dict[to_cache]
+            return cache_dict[args]
 
         result = func(*args)
-        cache_dict[to_cache] = result
+        cache_dict[args] = result
         print("Function ran")
         return result
+
     return inner
 
 @timer()
 @cache
 def calc(x, y):
-
     result = x * y
     return result
 
 cache_dict = dict()
 
-print(calc(100, 50))
-print(calc(100, 50))
+print("Result:", calc(100, 50))
+print("Cache: {}".format(cache_dict))
 
-print(calc(200, 100))
+print("Result:", calc(100, 50))
+print("Cache: {}".format(cache_dict))
 
-print(calc(200, 50))
+print("Result:", calc(200, 100))
+print("Cache: {}".format(cache_dict))
 
-print(calc(200, 100))
+print("Result:", calc(200, 50))
+print("Cache: {}".format(cache_dict))
 
+print("Result:", calc(200, 100))
+print("Cache: {}".format(cache_dict))

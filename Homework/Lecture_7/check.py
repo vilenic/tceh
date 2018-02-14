@@ -5,9 +5,9 @@
 def check(func):
     def inner(*args):
         print("-" * 50)
-        print('The folowing arguments were given: {}\n'.format([*args]))
+        print('The folowing arguments were given: {}\n'.format(args))
         result = func(*args)
-        for el in [*args]:
+        for el in args:
             print(el, "is of type:", type(el), "\n")
         print("The folowing result has been achieved: {}\n".format(result))
         print("Result is of type:", type(result), "\n")
@@ -17,7 +17,7 @@ def check(func):
 
 @check
 def foo(*args):
-    return [*args] * 2
+    return args * 2
 
 
 @check
