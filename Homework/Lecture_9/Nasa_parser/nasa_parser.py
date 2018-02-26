@@ -19,8 +19,7 @@ def parseHttpCodes(data):
     http = {}
 
     for ix in range(1, 6):
-        http["Code {}**: ".format(str(ix))] = \
-                len(re.findall(r'\s{}[0-35]\d\s'.format(str(ix)), data))
+        http["Code {}**: ".format(str(ix))] = len(re.findall(r'\s[1-5]\d\d\s'))
     return http
 
 
