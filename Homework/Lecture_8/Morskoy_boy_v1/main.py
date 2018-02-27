@@ -7,7 +7,6 @@ from seabattle import Seabattle, win_condition, clearScreen
 
 if __name__ == '__main__':
 
-    clearScreen()
     player1 = Seabattle('Player 1')
     player2 = Seabattle('Player 2')
     try:
@@ -20,7 +19,9 @@ if __name__ == '__main__':
                 move_result = player1.move(player2)
                 if move_result == 'miss':
                     break
-                elif win_condition(player1, player2):
+                elif win_condition(player1, player2) is True:
+                    clearScreen()
+                    player1.showBoards()
                     print('Congrats! You have won the game!')
                     exit(0)
 
@@ -28,7 +29,9 @@ if __name__ == '__main__':
                 move_result = player2.move(player1)
                 if move_result == 'miss':
                     break
-                elif win_condition(player1, player2):
+                elif win_condition(player1, player2) is True:
+                    clearScreen()
+                    player2.showBoards()
                     print('Congrats! You have won the game!')
                     exit(0)
     except KeyboardInterrupt:
